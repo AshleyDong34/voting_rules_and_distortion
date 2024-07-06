@@ -10,7 +10,7 @@ def custom_distribution():
 
 # so can use their external library or use our own parser.
 instance = OrdinalInstance()
-instance.parse_file('implementation/toi_data/00005-00000001.toi')
+instance.parse_file('toi_data/00005-00000001.toi')
 
 def test_parsing_ranking_data():
     parser = DataParser()

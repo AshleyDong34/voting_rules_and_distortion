@@ -5,10 +5,10 @@ import numpy as np
 
 
 # Define file paths for different ranking data structures
-soc_file_path = 'implementation/soc_data/00004-00000001.soc'
-soi_file_path = 'implementation/soi_data/00002-00000001.soi'
-toc_file_path = 'implementation/toc_data/00002-00000001.toc'
-toi_file_path = 'implementation/toi_data/00032-00000007.toi'
+soc_file_path = 'soc_data/00004-00000001.soc'
+soi_file_path = 'soi_data/00002-00000001.soi'
+toc_file_path = 'toc_data/00002-00000001.toc'
+toi_file_path = 'toi_data/00032-00000007.toi'
 
 
 # Custom distribution for utility generation
