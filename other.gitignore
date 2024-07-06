@@ -1,0 +1,27 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore virtual environment directory
+venv/
+
+# Ignore data files
+soc_data/
+soi_data/
+toc_data/
+toi_data/
+*.soi
+*.toc
+*.toi
+*.soc
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore other common files
+*.log
