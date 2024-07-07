@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 ## Data Setup
 
-# You need to create folders for all your data that you download. The data is found on the Preflib website(https://preflib.simonrey.fr/format#soc). There are 4 files you need to download to use the library offline. Each of them needs to be in their own folder named soc_data, soi_data, toc_data, and toi_data.
+You need to create folders for all your data that you download. The data is found on the Preflib website(https://preflib.simonrey.fr/format#soc). There are 4 files you need to download to use the library offline. Each of them needs to be in their own folder named soc_data, soi_data, toc_data, and toi_data.
 
 # Example structure
 ```sh
@@ -66,7 +66,7 @@ implementation/
 
 ## Usage
 
-# This library provides several ways to get ranking data with generated utilities
+This library provides several ways to get ranking data with generated utilities
 
 # 1. use the downloaded preflib data and parse them into a usable data type.
 
