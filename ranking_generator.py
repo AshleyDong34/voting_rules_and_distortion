@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from data_parser import DataParser
-import voting_rules as vr
+import voting_rules_and_distortion as vr
 
 def format_rankings(rankings):
     # Count the frequency of each ranking

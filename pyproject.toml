@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "voting_rules"
+name = "voting_rules_and_distortion"
 version = "0.1.0"
 description = "A library for distortion in utilitarian social choice theory"
 readme = "README.md"

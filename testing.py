@@ -1,5 +1,5 @@
 from collections import Counter
-import voting_rules as vr
+import voting_rules_and_distortion as vr
 from data_parser import DataParser
 import numpy as np
 

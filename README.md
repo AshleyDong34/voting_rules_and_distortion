@@ -73,7 +73,7 @@ This library provides several ways to get ranking data with generated utilities
 ```
 import numpy as np
 from preflibtools import DataParser
-from voting_rules import vr  
+from voting_rules_and_distortion import vr  
 
 def custom_distribution():
     return np.random.uniform(0, 1)
