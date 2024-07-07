@@ -41,7 +41,7 @@ source venv/bin/activate
 
 ## Installing dependencies
 
-# run the following code on to install the dependencies on the virtual environment
+run the following code on to install the dependencies on the virtual environment
 ```sh
 pip install -r requirements.txt
 ```
