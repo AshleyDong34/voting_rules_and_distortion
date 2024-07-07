@@ -68,7 +68,7 @@ implementation/
 
 This library provides several ways to get ranking data with generated utilities
 
-# 1. use the downloaded preflib data and parse them into a usable data type.
+# 1. Use the downloaded preflib data and parse them into a usable data type
 
 ```
 import numpy as np
@@ -84,7 +84,7 @@ num_alternatives = int(metadata['number_alternatives'])
 winner, _ = voting_rule_function(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
 ```
-# 2. Using URL parsing that Preflib provides, therefore you do not have to download the data if you don't want to
+# 2. Using URL parsing that Preflib provides, offsetting the need to download data
 ```
 import numpy as np
 from preflibtools.instances import OrdinalInstance
@@ -105,7 +105,7 @@ num_alternatives = int(metadata['number_alternatives'])
 winner, _ = vr.harmonic_scoring_rule(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
 ```
-# 3. Generate Ranking Data using Markov's model or single peaked preferences.
+# 3. Generate Ranking Data using Markov's model or single peaked preferences
 
 # Single Peaked Preferences:
 ```
@@ -129,7 +129,7 @@ print(f"The winner is: {winner}")
 ```
 # Calculating Deterministic Distortion
 
-# To use the deterministic distortion, there are two options: calculating either the average distortion over a number of iterations or the worst-case distortion over a number of iterations. It is set to average by default.
+To use the deterministic distortion, there are two options: calculating either the average distortion over a number of iterations or the worst-case distortion over a number of iterations. It is set to average by default.
 ```
 distortion = vr.det_distortion(winner, parser, num_iteres=10)
 print(f"Distortion: {distortion}")
