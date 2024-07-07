@@ -16,7 +16,7 @@ This library provides tools for:
 ```sh
 # Clone the repository
 git clone https://github.com/AshleyDong34/Masters-Project.git
-```sh
+```
 
 
 ## Setting up a virtual environment
