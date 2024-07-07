@@ -16,34 +16,42 @@ This library provides tools for:
 ```sh
 # Clone the repository
 git clone https://github.com/AshleyDong34/Masters-Project.git
+```
 
 
 ## Setting up a virtual environment
 
 # Navigate to the project directory
+```sh
 cd Masters-Project
-
+```
 # Create a virtual environment
+```sh
 python -m venv venv
-
+```
 # Activate the virtual environment
 # On Windows
+```sh
 .\venv\Scripts\activate
+```
 # On macOS/Linux
+```sh
 source venv/bin/activate
-
+```
 
 ## Installing dependencies
 
-# run the following code on to install the dependencies on the virtual environment
+run the following code on to install the dependencies on the virtual environment
+```sh
 pip install -r requirements.txt
-
+```
 
 ## Data Setup
 
-# You need to create folders for all your data that you download. The data is found on the Preflib website(https://preflib.simonrey.fr/format#soc). There are 4 files you need to download to use the library offline. Each of them needs to be in their own folder named soc_data, soi_data, toc_data, and toi_data.
+You need to create folders for all your data that you download. The data is found on the Preflib website(https://preflib.simonrey.fr/format#soc). There are 4 files you need to download to use the library offline. Each of them needs to be in their own folder named soc_data, soi_data, toc_data, and toi_data.
 
 # Example structure
+```sh
 implementation/
 ├── soc_data/
 │   ├── 00004-00000001.soc
@@ -54,14 +62,15 @@ implementation/
 │   ├── ...
 ├── toi_data/
 │   └── ...
-
+```
 
 ## Usage
 
-# This library provides several ways to get ranking data with generated utilities
+This library provides several ways to get ranking data with generated utilities
 
-# 1. use the downloaded preflib data and parse them into a usable data type.
+# 1. Use the downloaded preflib data and parse them into a usable data type
 
+```
 import numpy as np
 from preflibtools import DataParser
 from voting_rules import vr  
@@ -74,9 +83,9 @@ metadata, ranking_data, utilities_data = parser.parse()
 num_alternatives = int(metadata['number_alternatives'])
 winner, _ = voting_rule_function(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
-
-# 2. Using URL parsing that Preflib provides, therefore you do not have to download the data if you don't want to
-
+```
+# 2. Using URL parsing that Preflib provides, offsetting the need to download data
+```
 import numpy as np
 from preflibtools.instances import OrdinalInstance
 from preflibtools import DataParser
@@ -95,16 +104,18 @@ metadata, ranking_data, utilities_data = parser.parse_data(instance, custom_dist
 num_alternatives = int(metadata['number_alternatives'])
 winner, _ = vr.harmonic_scoring_rule(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
-
-# 3. Generate Ranking Data using Markov's model or single peaked preferences.
+```
+# 3. Generate Ranking Data using Markov's model or single peaked preferences
 
 # Single Peaked Preferences:
+```
 candidates = [1, 2, 3, 4, 5]  # List of candidates
 num_voters = 10
 parser = generate_single_peaked_preferences(candidates, num_voters)
 print(parser.ranking_data)
-
+```
 # Markov's Model(RIM)
+```
 num_voters = 10
 num_candidates = 4
 phi = 0.8  # A dispersion parameter; smaller values indicate closer to the reference ranking
@@ -115,14 +126,14 @@ print(parser.utilities_data)
 num_alternatives = int(parser.metadata['number_alternatives'])
 winner, _ = vr.harmonic_scoring_rule(parser.ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
-
+```
 # Calculating Deterministic Distortion
 
-# To use the deterministic distortion, there are two options: calculating either the average distortion over a number of iterations or the worst-case distortion over a number of iterations. It is set to average by default.
-
+To use the deterministic distortion, there are two options: calculating either the average distortion over a number of iterations or the worst-case distortion over a number of iterations. It is set to average by default.
+```
 distortion = vr.det_distortion(winner, parser, num_iteres=10)
 print(f"Distortion: {distortion}")
-
+```
 
 ## Features
 
