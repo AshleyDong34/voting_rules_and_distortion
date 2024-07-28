@@ -11,13 +11,16 @@ This library provides tools for:
 
 ## Installation
 
+```
+pip install tools_for_distortion
+```
+
 ### Cloning the Repository
 
 ```sh
 # Clone the repository
 git clone https://github.com/AshleyDong34/Masters-Project.git
 ```
-
 
 ## Setting up a virtual environment
 
