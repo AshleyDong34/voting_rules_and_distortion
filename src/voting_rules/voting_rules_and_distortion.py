@@ -266,12 +266,12 @@ def instant_runoff_voting(ranking_data, num_alternatives):
 
     Args:
         ranking_data (list): A list of tuples containing ranking information.
-        num_alternatives: number of alternatives
+        num_alternatives: Number of alternatives.
 
     Returns:
         The winning candidate identifier, or a list of candidates in the event of a tie.
     """
-    # Determine the number of alternatives and init the candidate scores
+    # Initialize candidate scores
     candidate_scores = {i: 0 for i in range(1, num_alternatives + 1)}
 
     # Convert ranking data into a list of ballots
@@ -279,11 +279,12 @@ def instant_runoff_voting(ranking_data, num_alternatives):
     for num_voters, ranks in ranking_data:
         ballots.extend([ranks] * num_voters)
 
-    # Conduct the IRV process
     while True:
+        # Reset candidate scores
+        candidate_scores = {i: 0 for i in candidate_scores}
+
         # Count the first-choice votes for each candidate
         for ballot in ballots:
-            # check if ballot is empty
             if ballot:
                 candidate_scores[ballot[0]] += 1
 
@@ -295,21 +296,21 @@ def instant_runoff_voting(ranking_data, num_alternatives):
 
         # Find the candidate(s) with the fewest votes
         fewest_votes = min(candidate_scores.values())
-        
-        # list comprehension, returns a list of candidates, where the candidate has the fewest votes
         candidates_to_eliminate = [candidate for candidate, votes in candidate_scores.items() if votes == fewest_votes]
 
         # If all remaining candidates have the fewest votes, tiebreaker
         if len(candidates_to_eliminate) == len(candidate_scores):
-            return candidates_to_eliminate  # Tiebreaker, return all, could be randomised for a candidate to win.
+            return candidates_to_eliminate  # Tiebreaker, return all, could be randomized for a candidate to win.
 
         # Eliminate the candidate(s) with the fewest votes
         for candidate in candidates_to_eliminate:
             del candidate_scores[candidate]
 
-        # Remove the eliminated candidate(s) from each ballot
-        for ballot in ballots:
-            ballot[:] = [candidate for candidate in ballot if candidate not in candidates_to_eliminate]
+        # Remove the eliminated candidate(s) from each ballot and redistribute their votes
+        for i in range(len(ballots)):
+            ballots[i] = [candidate for candidate in ballots[i] if candidate not in candidates_to_eliminate]
+
+        
 
 def det_distortion(winner, parser, num_iteres=1, average=True):
     

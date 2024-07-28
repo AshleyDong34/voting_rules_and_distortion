@@ -1,5 +1,5 @@
-from data_parser import DataParser
-import voting_rules_and_distortion as vr
+from src.data_parser import DataParser
+import src.voting_rules.voting_rules_and_distortion as vr
 from collections import Counter
 import numpy as np
 from preflibtools.instances import OrdinalInstance

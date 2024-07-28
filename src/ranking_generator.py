@@ -1,7 +1,7 @@
-import numpy as np
 import random
-from data_parser import DataParser
-import voting_rules_and_distortion as vr
+from src.data_parser import DataParser
+import src.voting_rules as vr
+import src.distortion as dist
 
 def format_rankings(rankings):
     # Count the frequency of each ranking
@@ -18,7 +18,6 @@ def format_rankings(rankings):
     for _, ranks in formatted_rankings:
         ties_group = [([candidate], 'single') for candidate in ranks]
         parser.ties_info.append(ties_group)
-    print(parser.ties_info)
     parser.metadata = {'number_alternatives': len(rankings[0])}
     return parser
 
@@ -102,7 +101,7 @@ print(parser.utilities_data)
 num_alternatives = int(parser.metadata['number_alternatives'])
 winner, _ = vr.harmonic_scoring_rule(parser.ranking_data, num_alternatives)
 
-print(vr.det_distortion(winner, parser, num_iteres=10))
+print(dist.det_distortion(winner, parser, num_iteres=10))
 
 # Example usage
 candidates = [1, 2, 3, 4, 5]  # List of candidates
