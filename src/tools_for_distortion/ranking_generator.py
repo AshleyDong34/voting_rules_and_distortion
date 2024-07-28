@@ -4,6 +4,15 @@ import src.tools_for_distortion.voting_rules as vr
 import src.tools_for_distortion.distortion as dist
 
 def format_rankings(rankings):
+    """
+    Formats the rankings into the required structure for further processing.
+    
+    Args:
+    rankings (list of list of int): A list of rankings where each ranking is a list of candidate IDs.
+    
+    Returns:
+    DataParser: An instance of DataParser containing the formatted rankings.
+    """
     # Count the frequency of each ranking
     ranking_counts = {}
     for r in rankings:
@@ -31,7 +40,7 @@ def generate_rim_rankings(num_voters, num_candidates, phi):
     phi (float): Dispersion parameter of the Mallows model.
     
     Returns:
-    list: A list of rankings, where each ranking is a tuple of the form (number of voters, ranking).
+    DataParser: An instance of DataParser containing the generated rankings.
     """
     def insertion_probability(i, j, phi):
         """
@@ -67,11 +76,20 @@ def generate_rim_rankings(num_voters, num_candidates, phi):
 
     # Generate the rankings
     rankings = [generate_ranking(num_candidates, phi) for _ in range(num_voters)]
-
-
+    
     return format_rankings(rankings)
 
 def generate_single_peaked_preferences(candidates, num_voters):
+    """
+    Generates single-peaked preferences for a list of candidates.
+    
+    Args:
+    candidates (list of int): A list of candidate IDs.
+    num_voters (int): Total number of voters.
+    
+    Returns:
+    DataParser: An instance of DataParser containing the generated single-peaked preferences.
+    """
     rankings = []
     # Randomly assign a peak preference for each voter
     for _ in range(num_voters):
@@ -88,23 +106,3 @@ def generate_single_peaked_preferences(candidates, num_voters):
         rankings.append(voter_pref)
     
     return format_rankings(rankings)
-
-
-# Example usage
-num_voters = 10
-num_candidates = 4
-phi = 0.8  # A dispersion parameter; smaller values indicate closer to the reference ranking
-
-parser = generate_rim_rankings(num_voters, num_candidates, phi)
-parser.generate_utilities()
-print(parser.utilities_data)
-num_alternatives = int(parser.metadata['number_alternatives'])
-winner, _ = vr.harmonic_scoring_rule(parser.ranking_data, num_alternatives)
-
-print(dist.det_distortion(winner, parser, num_iteres=10))
-
-# Example usage
-candidates = [1, 2, 3, 4, 5]  # List of candidates
-num_voters = 10
-parser = generate_single_peaked_preferences(candidates, num_voters)
-print(parser.ranking_data)
