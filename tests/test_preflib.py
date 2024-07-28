@@ -1,5 +1,5 @@
 
-from src.data_parser import DataParser
+from src.tools_for_distortion.data_parser import DataParser
 import numpy as np
 from preflibtools.instances import OrdinalInstance
 

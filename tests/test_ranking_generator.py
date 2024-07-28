@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 # Assuming the functions are imported here
-from src.ranking_generator import generate_rim_rankings, generate_single_peaked_preferences, format_rankings
+from src.tools_for_distortion.ranking_generator import generate_rim_rankings, generate_single_peaked_preferences, format_rankings
 
 # Set a seed for reproducibility in tests
 random.seed(42)

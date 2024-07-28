@@ -1,7 +1,7 @@
 from preflibtools.instances import OrdinalInstance
 from collections import Counter
-import src.distortion as dist
-from src.data_parser import DataParser
+import src.tools_for_distortion.distortion as dist
+from src.tools_for_distortion.data_parser import DataParser
 import numpy as np
 
 

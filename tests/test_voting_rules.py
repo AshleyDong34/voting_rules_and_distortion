@@ -1,7 +1,7 @@
 
 from collections import Counter
-import src.voting_rules as vr
-from src.data_parser import DataParser
+import src.tools_for_distortion.voting_rules as vr
+from src.tools_for_distortion.data_parser import DataParser
 import numpy as np
 
 # Define custom ranking data for testing

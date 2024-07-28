@@ -72,8 +72,8 @@ This library provides several ways to get ranking data with generated utilities
 
 ```
 import numpy as np
-from preflibtools import DataParser
-from voting_rules_and_distortion import vr  
+from src.tools_for_distortion.data_parser import DataParser
+import src.tools_for_distortion.voting_rules as vr
 
 def custom_distribution():
     return np.random.uniform(0, 1)
@@ -81,15 +81,16 @@ def custom_distribution():
 parser = DataParser('soc_data/00004-00000001.soc', custom_distribution)
 metadata, ranking_data, utilities_data = parser.parse()
 num_alternatives = int(metadata['number_alternatives'])
-winner, _ = voting_rule_function(ranking_data, num_alternatives)
+winner, _ = vr.harmonic_scoring_rule(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
+
 ```
 # 2. Using URL parsing that Preflib provides, offsetting the need to download data
 ```
 import numpy as np
 from preflibtools.instances import OrdinalInstance
-from preflibtools import DataParser
-import voting_rules as vr  # Replace with your actual import
+from src.tools_for_distortion.data_parser import DataParser
+import src.tools_for_distortion.voting_rules as vr
 
 # Custom distribution function for utility generation
 def custom_distribution():
@@ -104,18 +105,26 @@ metadata, ranking_data, utilities_data = parser.parse_data(instance, custom_dist
 num_alternatives = int(metadata['number_alternatives'])
 winner, _ = vr.harmonic_scoring_rule(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
+
 ```
 # 3. Generate Ranking Data using Markov's model or single peaked preferences
 
 # Single Peaked Preferences:
 ```
+from src.tools_for_distortion.ranking_generator import generate_single_peaked_preferences
+
 candidates = [1, 2, 3, 4, 5]  # List of candidates
 num_voters = 10
 parser = generate_single_peaked_preferences(candidates, num_voters)
 print(parser.ranking_data)
+print(parser.utilities)
 ```
 # Markov's Model(RIM)
 ```
+import numpy as np
+from src.tools_for_distortion.ranking_generator import generate_rim_rankings
+import src.tools_for_distortion.voting_rules as vr
+
 num_voters = 10
 num_candidates = 4
 phi = 0.8  # A dispersion parameter; smaller values indicate closer to the reference ranking
@@ -126,13 +135,17 @@ print(parser.utilities_data)
 num_alternatives = int(parser.metadata['number_alternatives'])
 winner, _ = vr.harmonic_scoring_rule(parser.ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
+
 ```
 # Calculating Deterministic Distortion
 
 To use the deterministic distortion, there are two options: calculating either the average distortion over a number of iterations or the worst-case distortion over a number of iterations. It is set to average by default.
 ```
-distortion = vr.det_distortion(winner, parser, num_iteres=10)
-print(f"Distortion: {distortion}")
+import src.tools_for_distortion.distortion as dist
+
+distortion_value = dist.det_distortion(winner, parser, num_iteres=10)
+print(f"Distortion: {distortion_value}")
+
 ```
 
 ## Features
@@ -152,6 +165,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Project Status
 
-This project is completed and no longer maintained. Future development is not planned. 
+This project is completed and no longer maintained. Future development is not currently planned. 
 
 
