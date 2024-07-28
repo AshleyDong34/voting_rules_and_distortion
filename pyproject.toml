@@ -1,21 +1,23 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
+requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "voting_rules_and_distortion"
+name = "tools_for_distortion"
 version = "0.2.0"
-description = "A library for distortion in utilitarian social choice theory"
+description = "A brief description of your package"
 readme = "README.md"
-license = {file = "LICENSE"}
-authors = [
-    {name = "Ashley Dong", email = "s2015258@ed.ac.uk"}
-]
 requires-python = ">=3.6"
 dependencies = [
     "numpy",
-    "preflibtools"
+    "preflibtools",
+    # other dependencies
 ]
 
 [project.urls]
 "Homepage" = "https://github.com/AshleyDong34/voting_rules_and_distortion"
+"Repository" = "https://github.com/AshleyDong34/voting_rules_and_distortion"
+
+[tool.flit.metadata]
+module = "tools_for_distortion"
+package-dir = "src"
