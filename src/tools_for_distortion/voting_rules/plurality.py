@@ -1,5 +1,5 @@
-from src.utils.scoring_rules import apply_scoring_rule
-from src.utils.validators import validate_ranking_data, validate_scoring_vector
+from src.tools_for_distortion.utils.scoring_rules import apply_scoring_rule
+from src.tools_for_distortion.utils.validators import validate_ranking_data, validate_scoring_vector
 
 
 def plurality_scoring_rule(ranking_data, num_alternatives, randomised=False):

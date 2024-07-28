@@ -1,4 +1,4 @@
-from src.utils.validators import validate_ranking_data, validate_num_alternatives
+from src.tools_for_distortion.utils.validators import validate_ranking_data, validate_num_alternatives
 
 def instant_runoff_voting(ranking_data, num_alternatives):
     """
