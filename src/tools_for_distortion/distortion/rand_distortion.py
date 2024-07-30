@@ -1,5 +1,5 @@
 import random
-from src.distortion.social_welfare import social_welfare
+from src.tools_for_distortion.distortion.social_welfare import social_welfare
 
 def rand_distortion(parser, probability_vector, method="expected", num_iters=100):
     """

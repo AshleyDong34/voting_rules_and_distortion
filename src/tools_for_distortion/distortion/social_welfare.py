@@ -13,7 +13,6 @@ def social_welfare(parser):
     """
     num_alternatives = int(parser.metadata['number_alternatives'])
 
-    # this is wrong, because ties info is for only one voter's rankings at a time, not all voters.
     utilities_data = parser.generate_utilities()
     utility_dic = {i: 0 for i in range(1, num_alternatives + 1)}
 
