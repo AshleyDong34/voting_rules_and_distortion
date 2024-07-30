@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "tools_for_distortion"
-version = "0.3.0"
+version = "0.5.0"
 description = "A brief description of your package"
 readme = "README.md"
 readme-content-type = "text/markdown"

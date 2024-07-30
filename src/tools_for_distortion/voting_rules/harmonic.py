@@ -1,7 +1,7 @@
 # src/voting_rules/harmonic.py
 
-from src.tools_for_distortion.utils.scoring_rules import apply_scoring_rule
-from src.tools_for_distortion.utils.validators import validate_ranking_data, validate_scoring_vector
+from ..utils.scoring_rules import apply_scoring_rule
+from ..utils.validators import validate_ranking_data, validate_scoring_vector
 
 def harmonic_scoring_rule(ranking_data, num_alternatives, randomised=False):
     """

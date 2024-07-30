@@ -1,4 +1,4 @@
-from src.tools_for_distortion.distortion.social_welfare import social_welfare
+from .social_welfare import social_welfare
 
 def det_distortion(winner, parser, num_iteres=1, average=True):
     """

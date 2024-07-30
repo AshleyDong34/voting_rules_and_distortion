@@ -24,20 +24,20 @@ git clone https://github.com/AshleyDong34/Masters-Project.git
 
 ## Setting up a virtual environment
 
-# Navigate to the project directory
+### Navigate to the project directory
 ```sh
 cd Masters-Project
 ```
-# Create a virtual environment
+### Create a virtual environment
 ```sh
 python -m venv venv
 ```
-# Activate the virtual environment
-# On Windows
+## Activate the virtual environment
+### On Windows
 ```sh
 .\venv\Scripts\activate
 ```
-# On macOS/Linux
+### On macOS/Linux
 ```sh
 source venv/bin/activate
 ```
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 You need to create folders for all your data that you download. The data is found on the Preflib website(https://preflib.simonrey.fr/format#soc). There are 4 files you need to download to use the library offline. Each of them needs to be in their own folder named soc_data, soi_data, toc_data, and toi_data.
 
-# Example structure
+### Example structure
 ```sh
 implementation/
 ├── soc_data/
@@ -71,12 +71,12 @@ implementation/
 
 This library provides several ways to get ranking data with generated utilities
 
-# 1. Use the downloaded preflib data and parse them into a usable data type
+### 1. Use the downloaded preflib data and parse them into a usable data type
 
 ```
 import numpy as np
-from src.tools_for_distortion.data_parser import DataParser
-import src.tools_for_distortion.voting_rules as vr
+from tools_for_distortion.data_parser import DataParser
+import tools_for_distortion.voting_rules as vr
 
 def custom_distribution():
     return np.random.uniform(0, 1)
@@ -88,12 +88,12 @@ winner, _ = vr.harmonic_scoring_rule(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
 
 ```
-# 2. Using URL parsing that Preflib provides, offsetting the need to download data
+### 2. Using URL parsing that Preflib provides, offsetting the need to download data
 ```
 import numpy as np
 from preflibtools.instances import OrdinalInstance
-from src.tools_for_distortion.data_parser import DataParser
-import src.tools_for_distortion.voting_rules as vr
+from tools_for_distortion.data_parser import DataParser
+import tools_for_distortion.voting_rules as vr
 
 # Custom distribution function for utility generation
 def custom_distribution():
@@ -110,11 +110,11 @@ winner, _ = vr.harmonic_scoring_rule(ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
 
 ```
-# 3. Generate Ranking Data using Markov's model or single peaked preferences
+### 3. Generate Ranking Data using Markov's model or single peaked preferences
 
-# Single Peaked Preferences:
+### Single Peaked Preferences:
 ```
-from src.tools_for_distortion.ranking_generator import generate_single_peaked_preferences
+from tools_for_distortion.ranking_generator import generate_single_peaked_preferences
 
 candidates = [1, 2, 3, 4, 5]  # List of candidates
 num_voters = 10
@@ -122,11 +122,11 @@ parser = generate_single_peaked_preferences(candidates, num_voters)
 print(parser.ranking_data)
 print(parser.utilities)
 ```
-# Markov's Model(RIM)
+### Markov's Model(RIM)
 ```
 import numpy as np
-from src.tools_for_distortion.ranking_generator import generate_rim_rankings
-import src.tools_for_distortion.voting_rules as vr
+from tools_for_distortion.ranking_generator import generate_rim_rankings
+import tools_for_distortion.voting_rules as vr
 
 num_voters = 10
 num_candidates = 4
@@ -140,7 +140,7 @@ winner, _ = vr.harmonic_scoring_rule(parser.ranking_data, num_alternatives)
 print(f"The winner is: {winner}")
 
 ```
-# Calculating Deterministic Distortion
+### Calculating Deterministic Distortion
 
 To use the deterministic distortion, there are two options: calculating either the average distortion over a number of iterations or the worst-case distortion over a number of iterations. It is set to average by default.
 ```

@@ -1,6 +1,6 @@
 # src/voting_rules/stv.py
 
-from src.tools_for_distortion.utils.validators import validate_ranking_data
+from ..utils.validators import validate_ranking_data
 
 def single_transferable_vote(ranking_data, num_alternatives, num_winners):
     """

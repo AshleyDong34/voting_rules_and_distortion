@@ -1,8 +1,8 @@
 # src/voting_rules/boutilier.py
 
 import random
-from src.tools_for_distortion.voting_rules.harmonic import harmonic_scoring_rule
-from src.tools_for_distortion.utils.validators import validate_ranking_data
+from .harmonic import harmonic_scoring_rule
+from ..utils.validators import validate_ranking_data
 
 def boutilier_random_harmonic(ranking_data, num_alternatives):
     """

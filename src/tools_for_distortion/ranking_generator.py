@@ -1,7 +1,6 @@
 import random
-from src.tools_for_distortion.data_parser import DataParser
-import src.tools_for_distortion.voting_rules as vr
-import src.tools_for_distortion.distortion as dist
+from .data_parser import DataParser
+
 
 def format_rankings(rankings):
     """
