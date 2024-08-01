@@ -144,7 +144,7 @@ print(f"The winner is: {winner}")
 
 To use the deterministic distortion, there are two options: calculating either the average distortion over a number of iterations or the worst-case distortion over a number of iterations. It is set to average by default.
 ```
-import src.tools_for_distortion.distortion as dist
+import tools_for_distortion.distortion as dist
 
 distortion_value = dist.det_distortion(winner, parser, num_iteres=10)
 print(f"Distortion: {distortion_value}")
@@ -165,9 +165,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Ashley Dong - initial work
 - Aris Filos-Ratsikas - supervisor
-
-## Project Status
-
-This project is completed and no longer maintained. Future development is not currently planned. 
-
-

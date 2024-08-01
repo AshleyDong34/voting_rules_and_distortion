@@ -20,13 +20,15 @@ def single_transferable_vote(ranking_data, num_alternatives, num_winners):
     validate_ranking_data(ranking_data, num_alternatives)  # Validate ranking data
 
     total_votes = sum(num_voters for num_voters, _ in ranking_data)
-    quota = total_votes // (num_winners + 1) + 1
+    quota = (total_votes // (num_winners + 1)) + 1
 
     ballots = [{'ranking': ranks, 'value': 1.0} for num_voters, ranks in ranking_data for _ in range(num_voters)]
     elected_candidates = set()
     candidate_votes = {i: 0 for i in range(1, num_alternatives + 1)}
 
+
     while len(elected_candidates) < num_winners:
+        print(1)
         for ballot in ballots:
             for candidate in ballot['ranking']:
                 if candidate not in elected_candidates:
@@ -38,12 +40,14 @@ def single_transferable_vote(ranking_data, num_alternatives, num_winners):
                 elected_candidates.add(candidate)
                 surplus = votes - quota
                 surplus_ratio = surplus / votes
+
                 for ballot in ballots:
                     if ballot['ranking'][0] == candidate:
                         ballot['value'] *= surplus_ratio
                         ballot['ranking'].pop(0)
                 break
         else:
+
             min_votes = min(candidate_votes.values())
             for candidate, votes in candidate_votes.items():
                 if votes == min_votes:
